@@ -18,7 +18,7 @@ final class TeamDetailsDependenciesProviderLive: TeamDetailsDependenciesProvider
   private var cancellables: Set<AnyCancellable> = []
   
   func launchGetTeamDetailsRequest(teamName: String, completion: @escaping (Result<Team?, Error>) -> Void) {
-    self.networking.get(type: SearchResponse.self, endpoint: AppAPI.getTeamDetails(teamName: teamName))
+    self.networking.get(type: TeamsSearchResponse.self, endpoint: AppAPI.getTeamDetails(teamName: teamName))
       .sink { complete in
         switch complete {
         case let .failure(error):
@@ -31,9 +31,5 @@ final class TeamDetailsDependenciesProviderLive: TeamDetailsDependenciesProvider
         completion(.success(team))
       }.store(in: &cancellables)
   }
-  
-}
-
-final class TeamDetailsDependenciesProviderMock {
   
 }

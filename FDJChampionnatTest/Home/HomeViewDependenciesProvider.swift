@@ -34,7 +34,7 @@ final class HomeViewDependenciesProviderLive: HomeViewDependenciesProvider {
   }
   
   func launchGetTeamsListRequest(leagueName: String, completion: @escaping (Result<[Team]?, Error>) -> Void) {
-    self.networking.get(type: SearchResponse.self, endpoint: AppAPI.getLeagueTeamsList(leagueName: leagueName))
+    self.networking.get(type: TeamsSearchResponse.self, endpoint: AppAPI.getLeagueTeamsList(leagueName: leagueName))
       .sink { complete in
         switch complete {
         case let .failure(error):
@@ -46,9 +46,5 @@ final class HomeViewDependenciesProviderLive: HomeViewDependenciesProvider {
         completion(.success(value.teams))
       }.store(in: &cancellables)
   }
-  
-}
-
-final class HomeViewDependenciesProviderMock {
   
 }

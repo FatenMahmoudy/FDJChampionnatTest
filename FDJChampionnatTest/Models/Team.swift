@@ -38,3 +38,15 @@ struct Team: Codable {
   }
   
 }
+
+extension Team {
+  init(with id: String, name: String, banner: String, badge: String, country: String, championship: String, description: String) {
+    self.id = id
+    self.name = name
+    self.banner = banner
+    self.badge = badge
+    self.country = country
+    self.championship = championship
+    self.description = description
+  }
+}

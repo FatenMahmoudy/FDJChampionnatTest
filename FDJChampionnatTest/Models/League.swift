@@ -28,3 +28,12 @@ struct League: Codable {
     self.alternateName = try container.decodeIfPresent(String.self, forKey: .alternateName) ?? nil
   }
 }
+
+extension League {
+  init(with id: String, name: String, sport: String, alternateName: String) {
+    self.id = id
+    self.name = name
+    self.sport = sport
+    self.alternateName = alternateName
+  }
+}

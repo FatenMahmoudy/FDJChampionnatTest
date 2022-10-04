@@ -19,7 +19,7 @@ class Networking: NetworkProtocol {
   func get<T>(type: T.Type, endpoint: AppAPI) -> AnyPublisher<T, Error> where T : Decodable {
     
     let urlString = endpoint.baseURL?.appendingPathComponent(endpoint.api_key + endpoint.path).absoluteString.removingPercentEncoding?.replacingOccurrences(of: " ", with: "%20")
-        
+    
     guard let urlRequest = URL(string: urlString ?? "") else {
       return Fail(outputType: T.self, failure: Error.self as! Error).eraseToAnyPublisher()
     }

@@ -5,6 +5,6 @@
 //  Created by Faten Mahmoudi on 03/10/2022.
 //
 
-protocol AutocompleteProtocol: AnyObject {
+protocol AutocompleteProtocol {
   func didSelectSuggestion(league: League)
 }

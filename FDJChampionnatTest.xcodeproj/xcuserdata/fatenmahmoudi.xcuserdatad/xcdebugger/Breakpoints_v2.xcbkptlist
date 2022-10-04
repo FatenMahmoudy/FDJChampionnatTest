@@ -372,5 +372,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BEA92C3C-532B-44FD-AFBF-50CA289243BC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FDJChampionnatTest/Models/TeamsSearchResponse.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "BEA92C3C-532B-44FD-AFBF-50CA289243BC - 70d36276f510ff78"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FDJChampionnatTest.TeamsSearchResponse.CodingKeys.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;FDJChampionnatTest.TeamsSearchResponse.CodingKeys&gt;"
+                  moduleName = "FDJChampionnatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatenmahmoudi/FDJChampionnatTest/FDJChampionnatTest/Models/TeamsSearchResponse.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "BEA92C3C-532B-44FD-AFBF-50CA289243BC - a84dafc7eea36db6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FDJChampionnatTest.TeamsSearchResponse.CodingKeys.rawValue.getter : Swift.String"
+                  moduleName = "FDJChampionnatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatenmahmoudi/FDJChampionnatTest/FDJChampionnatTest/Models/TeamsSearchResponse.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
