@@ -19,3 +19,16 @@ struct SearchResponse: Codable {
     self.teams = try container.decodeIfPresent(Array.self, forKey: .teams) ?? nil
   }
 }
+
+struct LeaguesSearchResponse: Codable {
+  let leagues: [League]?
+  
+  enum CodingKeys: String, CodingKey {
+    case leagues = "leagues"
+  }
+  
+  init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    self.leagues = try container.decodeIfPresent(Array.self, forKey: .leagues) ?? nil
+  }
+}

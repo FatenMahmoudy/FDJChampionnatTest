@@ -30,6 +30,12 @@
 		2731739E28E9000200FF5B17 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2731739D28E9000200FF5B17 /* TeamDetailsViewController.swift */; };
 		273173A028E9003000FF5B17 /* TeamDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2731739F28E9003000FF5B17 /* TeamDetailsViewModel.swift */; };
 		273173A228E9009200FF5B17 /* TeamDetailsDependenciesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273173A128E9009200FF5B17 /* TeamDetailsDependenciesProvider.swift */; };
+		273173AF28EB84B500FF5B17 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273173AE28EB84B500FF5B17 /* League.swift */; };
+		273173B228EB914400FF5B17 /* AutocompleteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273173B128EB914400FF5B17 /* AutocompleteProtocol.swift */; };
+		273173B428EB91D600FF5B17 /* AutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273173B328EB91D600FF5B17 /* AutocompleteViewController.swift */; };
+		273173B628EC47F000FF5B17 /* AutocompleteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273173B528EC47F000FF5B17 /* AutocompleteViewCell.swift */; };
+		273173B828EC486300FF5B17 /* AutocompleteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273173B728EC486300FF5B17 /* AutocompleteCellViewModel.swift */; };
+		273173BA28EC4AF800FF5B17 /* AutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273173B928EC4AF800FF5B17 /* AutocompleteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +82,12 @@
 		2731739D28E9000200FF5B17 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		2731739F28E9003000FF5B17 /* TeamDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewModel.swift; sourceTree = "<group>"; };
 		273173A128E9009200FF5B17 /* TeamDetailsDependenciesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsDependenciesProvider.swift; sourceTree = "<group>"; };
+		273173AE28EB84B500FF5B17 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
+		273173B128EB914400FF5B17 /* AutocompleteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteProtocol.swift; sourceTree = "<group>"; };
+		273173B328EB91D600FF5B17 /* AutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewController.swift; sourceTree = "<group>"; };
+		273173B528EC47F000FF5B17 /* AutocompleteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewCell.swift; sourceTree = "<group>"; };
+		273173B728EC486300FF5B17 /* AutocompleteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCellViewModel.swift; sourceTree = "<group>"; };
+		273173B928EC4AF800FF5B17 /* AutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +142,8 @@
 				2731739228E7922300FF5B17 /* Helpers */,
 				2731737A28E617F800FF5B17 /* Networking */,
 				2731737828E476E000FF5B17 /* Models */,
-				2731737728E476D100FF5B17 /* ViewModels */,
-				2731737928E476E900FF5B17 /* Views */,
+				2731738528E64C2500FF5B17 /* Home */,
+				2731739B28E8FFB000FF5B17 /* Details */,
 				2731734728E4746800FF5B17 /* AppDelegate.swift */,
 				2731734928E4746800FF5B17 /* SceneDelegate.swift */,
 				2731735028E4746900FF5B17 /* Assets.xcassets */,
@@ -159,31 +171,14 @@
 			path = FDJChampionnatTestUITests;
 			sourceTree = "<group>";
 		};
-		2731737728E476D100FF5B17 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				2731738528E64C2500FF5B17 /* Home */,
-				2731739B28E8FFB000FF5B17 /* Details */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		2731737828E476E000FF5B17 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				2731738128E6478D00FF5B17 /* Team.swift */,
 				2731738328E64B9200FF5B17 /* SearchResponse.swift */,
+				273173AE28EB84B500FF5B17 /* League.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		2731737928E476E900FF5B17 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2731739A28E8FF8400FF5B17 /* Home */,
-				2731739C28E8FFC000FF5B17 /* Details */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		2731737A28E617F800FF5B17 /* Networking */ = {
@@ -199,9 +194,12 @@
 		2731738528E64C2500FF5B17 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2731738A28E6548000FF5B17 /* HomeViewController.swift */,
+				2731738C28E76F8200FF5B17 /* HomeCollectionViewCell.swift */,
 				2731738628E64C3700FF5B17 /* HomeViewModel.swift */,
 				2731738828E64C8500FF5B17 /* HomeViewDependenciesProvider.swift */,
 				2731738E28E76FD200FF5B17 /* HomeCollectionCellViewModel.swift */,
+				273173B028EB90FF00FF5B17 /* Autocomplete */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -214,30 +212,26 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		2731739A28E8FF8400FF5B17 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				2731738A28E6548000FF5B17 /* HomeViewController.swift */,
-				2731738C28E76F8200FF5B17 /* HomeCollectionViewCell.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		2731739B28E8FFB000FF5B17 /* Details */ = {
 			isa = PBXGroup;
 			children = (
 				2731739F28E9003000FF5B17 /* TeamDetailsViewModel.swift */,
 				273173A128E9009200FF5B17 /* TeamDetailsDependenciesProvider.swift */,
+				2731739D28E9000200FF5B17 /* TeamDetailsViewController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
 		};
-		2731739C28E8FFC000FF5B17 /* Details */ = {
+		273173B028EB90FF00FF5B17 /* Autocomplete */ = {
 			isa = PBXGroup;
 			children = (
-				2731739D28E9000200FF5B17 /* TeamDetailsViewController.swift */,
+				273173B128EB914400FF5B17 /* AutocompleteProtocol.swift */,
+				273173B328EB91D600FF5B17 /* AutocompleteViewController.swift */,
+				273173B528EC47F000FF5B17 /* AutocompleteViewCell.swift */,
+				273173B728EC486300FF5B17 /* AutocompleteCellViewModel.swift */,
+				273173B928EC4AF800FF5B17 /* AutocompleteViewModel.swift */,
 			);
-			path = Details;
+			path = Autocomplete;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,8 +373,10 @@
 			files = (
 				2731738428E64B9200FF5B17 /* SearchResponse.swift in Sources */,
 				273173A228E9009200FF5B17 /* TeamDetailsDependenciesProvider.swift in Sources */,
+				273173B628EC47F000FF5B17 /* AutocompleteViewCell.swift in Sources */,
 				2731738228E6478D00FF5B17 /* Team.swift in Sources */,
 				2731734828E4746800FF5B17 /* AppDelegate.swift in Sources */,
+				273173B228EB914400FF5B17 /* AutocompleteProtocol.swift in Sources */,
 				2731738028E6215400FF5B17 /* Networking.swift in Sources */,
 				2731737E28E6212300FF5B17 /* AppAPI.swift in Sources */,
 				2731738B28E6548000FF5B17 /* HomeViewController.swift in Sources */,
@@ -388,10 +384,14 @@
 				2731737C28E620FA00FF5B17 /* EndpointType.swift in Sources */,
 				2731738728E64C3700FF5B17 /* HomeViewModel.swift in Sources */,
 				2731734A28E4746800FF5B17 /* SceneDelegate.swift in Sources */,
+				273173BA28EC4AF800FF5B17 /* AutocompleteViewModel.swift in Sources */,
+				273173B428EB91D600FF5B17 /* AutocompleteViewController.swift in Sources */,
 				2731739428E7923C00FF5B17 /* UIColor+Extension.swift in Sources */,
 				2731738928E64C8500FF5B17 /* HomeViewDependenciesProvider.swift in Sources */,
+				273173B828EC486300FF5B17 /* AutocompleteCellViewModel.swift in Sources */,
 				2731739E28E9000200FF5B17 /* TeamDetailsViewController.swift in Sources */,
 				273173A028E9003000FF5B17 /* TeamDetailsViewModel.swift in Sources */,
+				273173AF28EB84B500FF5B17 /* League.swift in Sources */,
 				2731738F28E76FD200FF5B17 /* HomeCollectionCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

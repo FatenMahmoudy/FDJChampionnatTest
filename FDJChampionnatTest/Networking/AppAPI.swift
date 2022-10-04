@@ -8,6 +8,7 @@
 import Foundation
 
 enum AppAPI {
+  case getAllLeaguesList
   case getLeagueTeamsList(leagueName: String)
   case getTeamDetails(teamName: String)
 }
@@ -24,6 +25,9 @@ extension AppAPI: EndpointType {
   
   var path: String {
     switch self {
+    case .getAllLeaguesList:
+      return "/all_leagues.php"
+      
     case let .getLeagueTeamsList(leagueName):
       return "/search_all_teams.php?l=\(leagueName)"
       

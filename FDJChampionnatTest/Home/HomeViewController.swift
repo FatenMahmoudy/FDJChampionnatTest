@@ -15,15 +15,7 @@ final class HomeViewController: UIViewController {
   
   private lazy var dataSource = self.makeDataSource()
   
-  private let searchController: UISearchController = {
-    let searchView = UISearchController(searchResultsController: nil)
-    searchView.hidesNavigationBarDuringPresentation = false
-    searchView.obscuresBackgroundDuringPresentation = false
-    searchView.searchBar.placeholder = "League"
-    searchView.searchBar.accessibilityIdentifier = "LeagueSearchBar"
-    
-    return searchView
-  }()
+  private var searchController: UISearchController?
   
   private lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -54,6 +46,11 @@ final class HomeViewController: UIViewController {
     self.setup()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.viewModel.handle(action: .launchGetAllLeaguesListRequest)
+  }
+  
   private func bindViewModel() {
     self.viewModel.$teamsVM
       .receive(on: DispatchQueue.main)
@@ -69,11 +66,18 @@ final class HomeViewController: UIViewController {
     self.setupSearchNavigationBar()
     self.setupCollectionView()
     self.setupLayout()
+    self.viewModel.autocompleteViewModel.configure(delegate: self)
   }
   
   private func setupSearchNavigationBar() {
-    self.searchController.searchResultsUpdater = self
-    self.searchController.searchBar.delegate = self
+    self.searchController = UISearchController(searchResultsController: AutocompleteViewController(viewModel: self.viewModel.autocompleteViewModel))
+    self.searchController?.hidesNavigationBarDuringPresentation = false
+    self.searchController?.obscuresBackgroundDuringPresentation = false
+    self.searchController?.searchBar.placeholder = "League"
+    self.searchController?.searchBar.accessibilityIdentifier = "LeagueSearchBar"
+    
+    self.searchController?.searchResultsUpdater = self
+    self.searchController?.searchBar.delegate = self
     self.definesPresentationContext = true
     self.navigationItem.searchController = self.searchController
   }
@@ -97,15 +101,21 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: UISearchBarDelegate {
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-    if let searchText = searchController.searchBar.text {
+    if let searchText = searchController?.searchBar.text {
       self.viewModel.handle(action: .launchGetTeamsListRequest(leagueName: searchText))
     }
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    self.searchController?.searchResultsController?.dismiss(animated: false)
   }
 }
 
 extension HomeViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
+    searchController.showsSearchResultsController = true
     if let searchText = searchController.searchBar.text {
+      self.viewModel.autocompleteViewModel.handle(action: .setSearchQuery(searchText))
     }
   }
 }
@@ -150,5 +160,15 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize.init(width: (view.frame.width / 2) - 8 , height: (view.frame.width / 2) - 8 )
+  }
+}
+
+extension HomeViewController: AutocompleteProtocol {
+  func didSelectSuggestion(league: League) {
+    guard let name = league.name else { return }
+    self.viewModel.handle(action: .launchGetTeamsListRequest(leagueName: name))
+    self.searchController?.searchBar.text = league.name
+    self.searchController?.showsSearchResultsController = false
+    
   }
 }

@@ -11,8 +11,10 @@ import Combine
 final class HomeViewModel {
   
   private let dependenciesProvider: HomeViewDependenciesProvider
+  private(set) var autocompleteViewModel: AutocompleteViewModel = AutocompleteViewModel()
   
   @Published private(set) var teamsVM : [HomeCollectionCellViewModel] = []
+  private(set) var leagues: [League] = []
   private var cancellables = Set<AnyCancellable>()
   
   init(with dependenciesProvider: HomeViewDependenciesProvider = HomeViewDependenciesProviderLive()) {
@@ -20,11 +22,25 @@ final class HomeViewModel {
   }
   
   enum Action {
+    case launchGetAllLeaguesListRequest
     case launchGetTeamsListRequest(leagueName: String)
   }
   
   func handle(action: Action) {
     switch action {
+    case .launchGetAllLeaguesListRequest:
+      self.dependenciesProvider.launchGetAllLeaguesListRequest { [weak self] result in
+        guard let self = self else { return }
+        switch result {
+        case let .success(leagues):
+          guard let leagues = leagues else { return }
+          self.leagues = leagues
+          self.autocompleteViewModel.handle(action: .updateLeaguesList(leagues: leagues))
+        case let .failure(error):
+          print("error: \(error)")
+        }
+      }
+      
     case let .launchGetTeamsListRequest(leagueName):
       self.dependenciesProvider.launchGetTeamsListRequest(leagueName: leagueName) { [weak self] result in
         guard let self = self else { return }
